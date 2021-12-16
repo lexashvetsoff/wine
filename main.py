@@ -7,13 +7,13 @@ import pandas as pd
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
-def get_age_company():
+def get_company_age():
     year_start = datetime.datetime(year=1920, month=1, day=1, hour=0)
     current_year = datetime.datetime.now()
     return current_year.year - year_start.year
 
 
-age_company = get_age_company()
+age_company = get_company_age()
 excel_data_df = pd.read_excel('wine3.xlsx', sheet_name='Лист1', keep_default_na=False).to_dict(orient='records')
 
 wine_by_categories = collections.defaultdict(list)
