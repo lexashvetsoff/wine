@@ -8,16 +8,16 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
 def get_company_age():
-    year_start = datetime.datetime(year=1920, month=1, day=1, hour=0)
+    year_founded_winery = 1920
     current_year = datetime.datetime.now()
-    return current_year.year - year_start.year
+    return current_year.year - year_founded_winery
 
 
 age_company = get_company_age()
-excel_data_df = pd.read_excel('wine3.xlsx', sheet_name='Лист1', keep_default_na=False).to_dict(orient='records')
+wines = pd.read_excel('wine3.xlsx', sheet_name='Лист1', keep_default_na=False).to_dict(orient='records')
 
 wine_by_categories = collections.defaultdict(list)
-for wine in excel_data_df:
+for wine in wines:
     wine_by_categories[wine['Категория']].append(wine)
 
 env = Environment(
