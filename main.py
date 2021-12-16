@@ -1,8 +1,10 @@
-from http.server import HTTPServer, SimpleHTTPRequestHandler
-from jinja2 import Environment, FileSystemLoader, select_autoescape
 import datetime
-import pandas as pd
 import collections
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+
+
+import pandas as pd
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
 def sort_dict(dict, key_search):
