@@ -114,12 +114,12 @@
           </div>
         </div>
         {% for wine in wines %}
-        <div class="row">
-          <div class="col-12 section-title text-center mb-5">
-            <h2 class="d-block">{{wine}}</h2>
+          <div class="row">
+            <div class="col-12 section-title text-center mb-5">
+              <h2 class="d-block">{{wine}}</h2>
+            </div>
           </div>
-        </div>
-        <div class="row">
+          <div class="row">
           {% for item in wines[wine] %}
             {% if item['Акция'] == '' %}
               {% if item['Сорт'] == '' %}
