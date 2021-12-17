@@ -15,28 +15,33 @@ def get_company_age():
     return current_year.year - year_founded_winery
 
 
-load_dotenv()
-age_company = get_company_age()
-wines = pd.read_excel(os.getenv('path_file'), sheet_name='Лист1', keep_default_na=False).to_dict(orient='records')
+def main():
+    load_dotenv()
+    age_company = get_company_age()
+    wines = pd.read_excel(os.getenv('path_file'), sheet_name='Лист1', keep_default_na=False).to_dict(orient='records')
 
-wine_by_categories = collections.defaultdict(list)
-for wine in wines:
-    wine_by_categories[wine['Категория']].append(wine)
+    wine_by_categories = collections.defaultdict(list)
+    for wine in wines:
+        wine_by_categories[wine['Категория']].append(wine)
 
-env = Environment(
-    loader=FileSystemLoader('.'),
-    autoescape=select_autoescape(['html', 'xml'])
-)
+    env = Environment(
+        loader=FileSystemLoader('.'),
+        autoescape=select_autoescape(['html', 'xml'])
+    )
 
-template = env.get_template('template.html')
+    template = env.get_template('template.html')
 
-rendered_page = template.render(
-    years=age_company,
-    wines=wine_by_categories
-)
+    rendered_page = template.render(
+        years=age_company,
+        wines=wine_by_categories
+    )
 
-with open('index.html', 'w', encoding="utf8") as file:
-    file.write(rendered_page)
+    with open('index.html', 'w', encoding="utf8") as file:
+        file.write(rendered_page)
 
-server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
-server.serve_forever()
+    server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
+    server.serve_forever()
+
+
+if __name__ == '__main__':
+    main()
