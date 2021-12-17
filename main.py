@@ -1,10 +1,12 @@
 import datetime
 import collections
 from http.server import HTTPServer, SimpleHTTPRequestHandler
+import os
 
 
 import pandas as pd
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from dotenv import load_dotenv
 
 
 def get_company_age():
@@ -13,8 +15,9 @@ def get_company_age():
     return current_year.year - year_founded_winery
 
 
+load_dotenv()
 age_company = get_company_age()
-wines = pd.read_excel('wine3.xlsx', sheet_name='Лист1', keep_default_na=False).to_dict(orient='records')
+wines = pd.read_excel(os.getenv('path_file'), sheet_name='Лист1', keep_default_na=False).to_dict(orient='records')
 
 wine_by_categories = collections.defaultdict(list)
 for wine in wines:
