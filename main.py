@@ -18,7 +18,7 @@ def get_company_age():
 def main():
     load_dotenv()
     age_company = get_company_age()
-    wines = pd.read_excel(os.getenv('PATH_FILE'), sheet_name='Лист1', keep_default_na=False).to_dict(orient='records')
+    wines = pd.read_excel(os.getenv('FILE_PATH'), sheet_name='Лист1', keep_default_na=False).to_dict(orient='records')
 
     wine_by_categories = collections.defaultdict(list)
     for wine in wines:
