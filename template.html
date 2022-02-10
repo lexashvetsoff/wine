@@ -113,14 +113,15 @@
             </p>
           </div>
         </div>
-        {% for wine in wines %}
+        {% for category in wines %}
           <div class="row">
             <div class="col-12 section-title text-center mb-5">
-              <h2 class="d-block">{{wine}}</h2>
+              <h2 class="d-block">{{category}}</h2>
             </div>
           </div>
           <div class="row">
-          {% for item in wines[wine] %}
+          {% set wine = wines[category] %}
+          {% for item in wine %}
             {% if not item['Акция'] %}
               {% if not item['Сорт'] %}
                 <div class="col-lg-4 mb-5 col-md-6">
