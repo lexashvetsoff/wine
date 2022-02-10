@@ -122,6 +122,34 @@
           <div class="row">
           {% set wine = wines[category] %}
           {% for item in wine %}
+            {% if not item['Сорт'] %}
+                <div class="col-lg-4 mb-5 col-md-6">
+                  <div class="wine_v_1 text-center pb-4 pt-5">
+                    <img src="images/{{item['Картинка']}}" alt="Image" class="img-fluid">
+                    <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
+                    <div>
+                      <h3 class="heading mt-3 mb-3 text-dark">{{item['Название']}}</h3>
+                      <p>
+                        <span class="price">{{item['Цена']}} р.</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                <div class="col-lg-4 mb-5 col-md-6">
+                  <div class="wine_v_1 text-center pb-4 pt-5">
+                    <img src="images/{{item['Картинка']}}" alt="Image" class="img-fluid">
+                    <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
+                    <div>
+                      <h3 class="heading mt-3 mb-3 text-dark">{{item['Название']}}</h3>
+                      <p>
+                        Сорт винограда - {{item['Сорт']}}<br/>
+                        <span class="price">{{item['Цена']}} р.</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
             {% if not item['Акция'] %}
               {% if not item['Сорт'] %}
                 <div class="col-lg-4 mb-5 col-md-6">
@@ -139,35 +167,6 @@
                 <div class="col-lg-4 mb-5 col-md-6">
                   <div class="wine_v_1 text-center pb-4 pt-5">
                     <img src="images/{{item['Картинка']}}" alt="Image" class="img-fluid">
-                    <div>
-                      <h3 class="heading mt-3 mb-3 text-dark">{{item['Название']}}</h3>
-                      <p>
-                        Сорт винограда - {{item['Сорт']}}<br/>
-                        <span class="price">{{item['Цена']}} р.</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              {% endif %}
-            {% else %}
-              {% if not item['Сорт'] %}
-                <div class="col-lg-4 mb-5 col-md-6">
-                  <div class="wine_v_1 text-center pb-4 pt-5">
-                    <img src="images/{{item['Картинка']}}" alt="Image" class="img-fluid">
-                    <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
-                    <div>
-                      <h3 class="heading mt-3 mb-3 text-dark">{{item['Название']}}</h3>
-                      <p>
-                        <span class="price">{{item['Цена']}} р.</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              {% else %}
-                <div class="col-lg-4 mb-5 col-md-6">
-                  <div class="wine_v_1 text-center pb-4 pt-5">
-                    <img src="images/{{item['Картинка']}}" alt="Image" class="img-fluid">
-                    <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
                     <div>
                       <h3 class="heading mt-3 mb-3 text-dark">{{item['Название']}}</h3>
                       <p>
