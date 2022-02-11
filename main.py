@@ -10,9 +10,9 @@ from dotenv import load_dotenv
 
 
 def get_company_age():
-    year_founded_winery = 1920
+    founded_winery_year = 1920
     current_year = datetime.datetime.now()
-    return current_year.year - year_founded_winery
+    return current_year.year - founded_winery_year
 
 
 def main():
