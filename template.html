@@ -129,16 +129,12 @@
                 {% endif %}
                 <div>
                   <h3 class="heading mt-3 mb-3 text-dark">{{item['Название']}}</h3>
-                  {% if item['Сорт'] %}
-                    <p>
+                  <p>
+                    {% if item['Сорт'] %}
                       Сорт винограда - {{item['Сорт']}}<br/>
-                      <span class="price">{{item['Цена']}} р.</span>
-                    </p>
-                  {% else %}
-                    <p>
-                      <span class="price">{{item['Цена']}} р.</span>
-                    </p>
-                  {% endif %}
+                    {% endif %}
+                    <span class="price">{{item['Цена']}} р.</span>
+                  </p>
                 </div>
               </div>
             </div>
